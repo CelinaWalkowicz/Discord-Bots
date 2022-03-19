@@ -1,6 +1,6 @@
 # Various Discord Bots
-* Get-Happy
-* Occult
+* [Get-Happy](https://github.com/CelinaWalkowicz/Discord-Bots/blob/main/README.md#get-happy)
+* [Occult](https://github.com/CelinaWalkowicz/Discord-Bots/blob/main/README.md#occult)
 
 ---
 
