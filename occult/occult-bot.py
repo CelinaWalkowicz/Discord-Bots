@@ -27,8 +27,7 @@ Structure
 # Imports
 import os, asyncio, discord
 import requests, json
-import random, time
-import emoji
+import random
 from dotenv import load_dotenv
 from geopy.geocoders import Nominatim
 
@@ -53,18 +52,18 @@ geolocator = Nominatim(user_agent = 'cantankerous_pfifferling_occult_bot')
 # 3. Variables
 
 # Horoscope
-aries = emoji.emojize(':aries:')
-taurus = emoji.emojize(':taurus:')
-gemini = emoji.emojize(':gemini:')
-cancer = emoji.emojize(':cancer:')
-leo = emoji.emojize(':leo:')
-virgo = emoji.emojize(':virgo:')
-libra = emoji.emojize(':libra:')
-scorpio = emoji.emojize(':scorpius:')
-sagittarius = emoji.emojize(':sagittarius:')
-capricorn = emoji.emojize(':capricorn:')
-aquarius = emoji.emojize(':aquarius:')
-pisces = emoji.emojize(':pisces:')
+aries_emoji = '\N{ARIES}'
+taurus_emoji = '\N{TAURUS}'
+gemini_emoji = '\N{GEMINI}'
+cancer_emoji = '\N{CANCER}'
+leo_emoji = '\N{LEO}'
+virgo_emoji = '\N{VIRGO}'
+libra_emoji = '\N{LIBRA}'
+scorpio_emoji = '\N{SCORPIUS}'
+sagittarius_emoji = '\N{SAGITTARIUS}'
+capricorn_emoji = '\N{CAPRICORN}'
+aquarius_emoji = '\N{AQUARIUS}'
+pisces_emoji = '\N{PISCES}'
 
 # Tarot
 # Tarot Card Data from https://github.com/ekelen
@@ -137,7 +136,7 @@ def get_horoscope_aquarius():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{aquarius} {json_data['sign'].upper()} {aquarius}
+{aquarius_emoji} {json_data['sign'].upper()} {aquarius_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -151,7 +150,7 @@ def get_horoscope_pisces():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{pisces} {json_data['sign'].upper()} {pisces}
+{pisces_emoji} {json_data['sign'].upper()} {pisces_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -165,7 +164,7 @@ def get_horoscope_aries():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{aries} {json_data['sign'].upper()} {aries}
+{aries_emoji} {json_data['sign'].upper()} {aries_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -179,7 +178,7 @@ def get_horoscope_taurus():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{taurus} {json_data['sign'].upper()} {taurus}
+{taurus_emoji} {json_data['sign'].upper()} {taurus_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -193,7 +192,7 @@ def get_horoscope_gemini():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{gemini} {json_data['sign'].upper()} {gemini}
+{gemini_emoji} {json_data['sign'].upper()} {gemini_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -207,7 +206,7 @@ def get_horoscope_cancer():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{cancer} {json_data['sign'].upper()} {cancer}
+{cancer_emoji} {json_data['sign'].upper()} {cancer_emoji}
 
 
 {date}
@@ -222,7 +221,7 @@ def get_horoscope_leo():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{leo} {json_data['sign'].upper()} {leo}
+{leo_emoji} {json_data['sign'].upper()} {leo_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -236,7 +235,7 @@ def get_horoscope_virgo():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{virgo} {json_data['sign'].upper()} {virgo}
+{virgo_emoji} {json_data['sign'].upper()} {virgo_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -250,7 +249,7 @@ def get_horoscope_libra():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{libra} {json_data['sign'].upper()} {libra}
+{libra_emoji} {json_data['sign'].upper()} {libra_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -264,7 +263,7 @@ def get_horoscope_scorpio():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{scorpio} {json_data['sign'].upper()} {scorpio}
+{scorpio_emoji} {json_data['sign'].upper()} {scorpio_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -278,7 +277,7 @@ def get_horoscope_sagittarius():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{sagittarius} {json_data['sign'].upper()} {sagittarius}
+{sagittarius_emoji} {json_data['sign'].upper()} {sagittarius_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -292,7 +291,7 @@ def get_horoscope_capricorn():
     json_data = json.loads(response.text)
     date = horo_date(json_data)
     horoscope = f'''
-{capricorn} {json_data['sign'].upper()} {capricorn}
+{capricorn_emoji} {json_data['sign'].upper()} {capricorn_emoji}
 
 {date}
 {json_data['horoscope']}
@@ -338,6 +337,63 @@ def draw(idx):
     mean_down = draw['meaning_rev']
     description = draw['desc']
 
+    # Fix Inaccurate Meanings & Implement Requested
+    # Changes from Testers
+    # Some changes are from https://www.biddytarot.com/
+
+    # The Magician
+    magic_desc = '''
+The Magician card is numbered One – the number of new beginnings and opportunities – and associates with the planet of Mercury. He stands with one arm stretched upwards towards the Universe, and the other pointing down to the earth. His positioning represents his connection between the spiritual realms and the material realms. The Magician uses this relationship to create and manifest his goals in the physical realm. He is the conduit that converts energy into matter. The Magician’s robe is white, symbolising purity, and his cloak is red, representing worldly experience and knowledge.
+
+On the table in front of him are the four symbols of the Tarot suits – a cup, pentacle, sword and wand – each symbolising one of the four elements – water, earth, air and fire. It is also a sign that he has all the tools (and elements) he needs to manifest his intentions into being. Above his head is the infinity symbol, and around his waist is a snake biting its own tail – both of which signal that he has access to unlimited potential. And in the foreground is an array of foliage and flowers, symbolising the blossoming and fruition of his ideas and aspirations.
+    '''
+    if name.lower() == 'the magician':
+        description = magic_desc
+        mean_up = 'Manifestation, resourcefulness, power, inspired action'
+        mean_down = 'Manipulation, poor planning, untapped talents'
+
+    # High Priestess
+    hp_desc = '''
+The High Priestess sits in front of a thin veil decorated with pomegranates. The veil represents the separate conscious and subconscious realms, the seen and the unseen, and serves to keep casual onlookers out. Only the initiated may enter. The pomegranates on the veil are a symbol of abundance, fertility and the divine feminine, and are sacred to Persephone who ate a pomegranate seed in the underworld and was forced to return every year.
+
+On either side of The High Priestess stand two pillars, marking the entrance to this sacred, mystical temple (also associated with the Temple of Solomon). One pillar is black with the letter B (Boaz, meaning ‘in his strength’) and the other is white with the letter J (Jachin, meaning ‘he will establish’). The black and white colors of the pillars symbolize duality – masculine and feminine, darkness and light – stating that knowledge and acceptance of duality are required to enter this sacred space.
+
+The High Priestess wears a blue robe with a cross on her chest and a horned diadem (or crown), both a symbol of her divine knowledge and her status as a divine ruler. In her lap, she holds a scroll with the letter TORA, signifying the Greater Law (according to A. E. Waite). It is partly covered, signifying that this sacred knowledge is both explicit and implicit, it will only be revealed when the student is ready to look beyond the material realm. The crescent moon at her feet symbolizes her connection with the divine feminine, her intuition and subconscious mind, and the natural cycles of the moon.
+    '''
+
+    if name.lower() == 'the high priestess':
+        description = hp_desc
+        mean_up = 'Intuition, sacred knowledge, divine feminine, the subconscious mind'
+        mean_down = 'Secrets, disconnected from intuition, withdrawal and silence'
+
+    # Fortitude: Description
+    fort_remove = 'These higher meanings are, however, matters of inference, and I do not suggest that they are transparent on the surface of the card. They are intimated in a concealed manner by the chain of flowers, which signifies, among many other things, the sweet yoke and the light burden of Divine Law, when it has been taken into the heart of hearts. The card has nothing to do with self-confidence in the ordinary sense, though this has been suggested--but it concerns the confidence of those whose strength is God, who have found their refuge in Him.'
+    if name.lower() == 'fortitude':
+        description = description.replace(fort_remove, '')
+
+    # The Tower: Description, Reverse Meaning
+    tower_desc = '''
+The Tower shows a tall tower perched on the top of a rocky mountain. Lightning strikes set the building alight, and two people leap from the windows, head first and arms outstretched. It is a scene of chaos and destruction.
+
+The Tower itself is a solid structure, but because it has been built on shaky foundations, it only takes one bolt of lightning to bring it down. It represents ambitions and goals made on false premises.
+
+The lightning represents a sudden surge of energy and insight that leads to a break-through or revelation. It enters via the top of the building and knocks off the crown, symbolizing energy flowing down from the Universe, through the crown chakra. The people are desperate to escape from the burning building, not knowing what awaits them as they fall. Around them are 22 flames, representing the 12 signs of the zodiac and 10 points of the Tree of Life, suggesting that even in times of disaster, there is always divine intervention.
+    '''
+    if name.lower() == 'the tower':
+        # Description
+        description = tower_desc
+        # Reverse Meaning
+        mean_down = 'Personal transformation, fear of change, averting disaster'
+
+    # The World: Description
+    world_desc = '''
+The World card shows a naked woman wrapped in a purple cloth, dancing inside a large laurel wreath. She looks behind her to the past, while her body moves forward to the future. In her hands are two wands or batons, like the one The Magician holds. It is a symbol that what was manifested with The Magician has now come to completion with The World. The wreath is circular, symbolizing a continual cycle of successful completion and new beginnings because, as the woman steps through the wreath, she is completing one phase but beginning another one almost straight away.
+
+Around the wreath are four figures (a lion, bull, cherub and eagle), similar to those in the Wheel of Fortune. Both The World and the Wheel of Fortune speak to the cyclical nature of your life and your progression through its cycles. The four figures represent the four fixed signs of the Zodiac—Leo, Taurus, Aquarius, and Scorpio. They are symbolic of the four elements, the four suits of Tarot, four compass points, four seasons, and the four corners of the Universe. They are here to guide you from one phase to the next, bringing balance and harmony to your journey.
+    '''
+    if name.lower() == 'the world':
+        description = world_desc
+
     # Determine Card Orientation & Meaning
     meaning = ''
     orientation = ''
@@ -348,6 +404,7 @@ def draw(idx):
     else:
         meaning = mean_up
         orientation = 'upright'
+
 
     return name, typ, meaning, orientation, description
 
@@ -464,50 +521,74 @@ async def on_message(message):
 
         if message.content.startswith('$aquarius'):
             aq_horo = get_horoscope_aquarius()
+            await message.add_reaction(aquarius_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(aq_horo)
 
         elif message.content.startswith('$pisces'):
             pi_horo = get_horoscope_pisces()
+            await message.add_reaction(pisces_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(pi_horo)
 
         elif message.content.startswith('$aries'):
             ar_horo = get_horoscope_aries()
+            await message.add_reaction(aries_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(ar_horo)
 
         elif message.content.startswith('$taurus'):
             taur_horo = get_horoscope_taurus()
+            await message.add_reaction(taurus_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(taur_horo)
 
         elif message.content.startswith('$gemini'):
             gem_horo = get_horoscope_gemini()
+            await message.add_reaction(gemini_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(gem_horo)
 
         elif message.content.startswith('$cancer'):
             can_horo = get_horoscope_cancer()
+            await message.add_reaction(cancer_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(can_horo)
 
         elif message.content.startswith('$leo'):
             leo_horo = get_horoscope_leo()
+            await message.add_reaction(leo_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(leo_horo)
 
         elif message.content.startswith('$virgo'):
             vir_horo = get_horoscope_virgo()
+            await message.add_reaction(virgo_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(vir_horo)
 
         elif message.content.startswith('$libra'):
             lib_horo = get_horoscope_libra()
+            await message.add_reaction(libra_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(lib_horo)
 
         elif message.content.startswith('$scorpio'):
             scor_horo = get_horoscope_scorpio()
+            await message.add_reaction(scorpio_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(scor_horo)
 
         elif message.content.startswith('$sagittarius'):
             sag_horo = get_horoscope_sagittarius()
+            await message.add_reaction(sagittarius_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(sag_horo)
 
         elif message.content.startswith('$capricorn'):
             cap_horo = get_horoscope_capricorn()
+            await message.add_reaction(capricorn_emoji)
+            await asyncio.sleep(2)
             await message.channel.send(cap_horo)
 
     # Check Messages are from Tarot Channel
