@@ -1,4 +1,6 @@
 # Various Discord Bots
+* Get-Happy
+* Occult
 
 ---
 
