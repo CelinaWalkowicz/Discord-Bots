@@ -27,15 +27,18 @@
 ###### *Without this channel users will not be able to add new words of encouragement.
 
 #### Jokes of the Day
-> Sourced from [jokes.io](https://jokes.one/api/joke/#python)
+Sourced from [jokes.io](https://jokes.one/api/joke/#python)
   - `$joke` returns the joke of the day
   - `$knock` returns the knock knock joke of the day
   - `$animal` returns the animal joke of the day
 
 #### Images:
-  - `$dog` returns a random image of a dog. Source: [The Dog API (dog.ceo)](https://dog.ceo)
-  - `$corgi` returns a random image of a corgi. Source: [The Dog API (dog.ceo)](https://dog.ceo)
-  - `$cat` returns a random image of a cat. Source: [The Cat API](https://thecatapi.com/)
+  - `$dog` returns a random image of a dog. 
+    -  Source: [The Dog API (dog.ceo)](https://dog.ceo)
+  - `$corgi` returns a random image of a corgi. 
+    - Source: [The Dog API (dog.ceo)](https://dog.ceo)
+  - `$cat` returns a random image of a cat.
+    - Source: [The Cat API](https://thecatapi.com/)
 
 ---
 
