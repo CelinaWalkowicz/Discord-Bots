@@ -53,7 +53,9 @@
 
 ### • Commands
 - In the horoscope channel: `$[Your Zodiac Sign Here]`....for example `$gemini`
+  - [The Unifficial Astrology.com API](https://ohmanda.com/api/horoscope/]
 - In the tarot channel: `$draw1` and `$draw3` for one and three card tarot draws, respectively.
+  - Source: [Tarot API](https://github.com/ekelen/tarot-api)
 
 ---
 
