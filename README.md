@@ -45,18 +45,19 @@ Sourced from [jokes.io](https://jokes.one/api/joke/#python)
 ## Occult
 ### • Description 
 > This bot monitors a specific channels in a Discord Guild (Server), and allows members to retrieve their daily
-> horoscope, and pull one or three tarot cards. Moonpase announcements are under works, and will be coming soon!
+> horoscope, and pull one or three tarot cards. Moonphase announcements are under works, and will be coming soon!
 > Guild Administrators will need to create the following channels
 >   - "horoscope"
 >   - "tarot"
 >   - "moon-phases"....coming soon!
 
 ### • Requirements
-  - asyncio, discord, dotenv, emoji, geopy's Nominatim, json, os, random, requests, sqlite3
+  - asyncio, discord, dotenv, geopy's Nominatim, json, os, random, requests, sqlite3
 
 ### • Commands
 - In the horoscope channel: `$[Your Zodiac Sign Here]`....for example `$gemini`
-  - [The Unifficial Astrology.com API](https://ohmanda.com/api/horoscope/]
+  - This bot will react to the command with the specified zodiac's emoji, and return its daily horoscope. 
+  - [The Unifficial Astrology.com API](https://ohmanda.com/api/horoscope/)
 - In the tarot channel: `$draw1` and `$draw3` for one and three card tarot draws, respectively.
   - Source: [Tarot API](https://github.com/ekelen/tarot-api)
 
