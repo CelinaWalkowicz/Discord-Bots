@@ -17,7 +17,7 @@ Structure
 # 1. Imports
 import os, asyncio, discord
 import requests, json, sqlite3
-import random, time
+import random, datetime
 from dotenv import load_dotenv
 
 # #### # #### # #### # #### # #### # #### # #### # #### # #### # #### # #### #
@@ -39,12 +39,16 @@ conn = sqlite3.connect('encouragement.sqlite3')
 
 # 3. Variables
 
+line_break = '✧.*◌·͡˔·ོ◌ *·✧✧.*◌·͡˔·ོ◌ *·✧✧.*◌·͡˔·ོ◌ *·✧'
+
 # Jokes
 # Source https://jokes.one/api/joke/#python
 # Thank you jokes.one for free daily jokes!
 jod_url = 'https://api.jokes.one/jod'
 knock_url = f'{jod_url}?category=knock-knock'
 animal_url = f'{jod_url}?category=animal'
+jod_instantiate = 'Your Daily Jokes of the Day will be sent every 24 hours from activation.'
+jod_credit = 'Your Joke is Brought to You By: joke.one'
 
 # #### # #### # #### # #### # #### # #### # #### # #### # #### # #### # #### #
 
@@ -246,43 +250,62 @@ async def on_message(message):
             aff_quote = get_affirmation()
             await message.channel.send(aff_quote)
 
-        # pictures
-        if message.content.startswith('$dog'):
-            dog = get_dogs()
-            await message.channel.send(dog)
+        if message.channel.name == 'pawsitive':
+            # pictures
+            if message.content.startswith('$dog'):
+                dog = get_dogs()
+                await message.channel.send(dog)
 
-        if message.content.startswith('$corgi'):
-            corgi = get_corgi()
-            await message.channel.send(corgi)
+            if message.content.startswith('$corgi'):
+                corgi = get_corgi()
+                await message.channel.send(corgi)
 
-        if message.content.startswith('$cat'):
-            cat = get_kittykittykitty()
-            await message.channel.send(cat)
+            if message.content.startswith('$cat'):
+                cat = get_kittykittykitty()
+                await message.channel.send(cat)
 
-        if message.content.startswith('$keanu'):
-            keanu_url = get_keanu()
-            await message.channel.send(keanu_url)
+            if message.content.startswith('$keanu'):
+                keanu_url = get_keanu()
+                await message.channel.send(keanu_url)
 
         # Jokes from jokes.io
+        if message.channel.name == 'jokes-of-the-day':
 
-        if message.content.startswith('$joke'):
-            # Pull Jokes of the Day
-            jod, knock_knock, animal_jod = get_jods()
-            jod_credit = 'Your Joke is Brought to You By: joke.one'
+            # Trigger Command
+            if message.content.startswith('$joke'):
 
-            # Credit
-            await message.channel.send(jod_credit)
-            await asyncio.sleep(2)
-            # Joke of the Day
-            if message.content == '$joke':
-                await message.channel.send(jod)
+                # One time opening message
+                await message.channel.send(jod_instantiate)
 
-            # Knock Knock Joke of the Day
-            elif 'knock' in message.content:
-                await message.channel.send(knock_knock)
+                # Infiinite Loop
+                while 1 == True:
 
-            elif 'animal' in message.content:
-                await message.channel.send(animal_jod)
+                    # Pull Jokes of the Day
+                    jod, knock_knock, animal_jod = get_jods()
+
+                    # Credit
+                    await message.channel.send(line_break)
+                    await message.channel.send(jod_credit)
+                    await message.channel.send(line_break)
+                    await asyncio.sleep(5)
+                    # Joke of the Day
+                    await message.channel.send(jod)
+                    await message.channel.send(line_break)
+                    await asyncio.sleep(5)
+
+                    # Knock Knock Joke of the Day
+                    await message.channel.send(knock_knock)
+                    await message.channel.send(line_break)
+                    await asyncio.sleep(5)
+
+                    # Animal Joke of the Day
+                    await message.channel.send(animal_jod)
+                    await message.channel.send(line_break)
+
+                    # Wait 24 Hours
+                    await asyncio.sleep(86400)
+
+
 
 
 # #### # #### # #### # #### # #### # #### # #### # #### # #### # #### # #### #
