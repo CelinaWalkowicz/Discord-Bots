@@ -39,7 +39,11 @@ conn = sqlite3.connect('encouragement.sqlite3')
 
 # 3. Variables
 
-line_break = '✧.*◌·͡˔·ོ◌ *·✧✧.*◌·͡˔·ོ◌ *·✧✧.*◌·͡˔·ོ◌ *·✧'
+line_break = '''
+
+✧.*◌·͡˔·ོ◌ *·✧✧.*◌·͡˔·ོ◌ *·✧✧.*◌·͡˔·ོ◌ *·✧
+
+'''
 
 # Jokes
 # Source https://jokes.one/api/joke/#python
